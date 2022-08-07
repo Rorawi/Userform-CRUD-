@@ -3,13 +3,15 @@ import { Form,Button } from 'react-bootstrap';
 
 class AddUserForm extends Component {
     constructor(props){
-        super(props);
+        super();
         this.state = {
             name:'',
             email:'',
             gen:'',
         }
     }
+
+    
     handleName = (e) => {
         e.preventDefault();
 this.setState({
@@ -25,14 +27,14 @@ this.setState({
             email:'',
             gen:'',
         })
-        console.log('forms submitted:' ,this.state)
+        // console.log('forms submitted:' ,this.state)
       }
 
       
     render() {
         return (
             
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit} style={{ marginTop: '20px' }}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name</Form.Label>
         <Form.Control type="text" placeholder="Enter name" name="name" value={this.state.name} onChange={this.handleName} />
