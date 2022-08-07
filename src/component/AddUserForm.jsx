@@ -27,7 +27,8 @@ this.setState({
             email:'',
             gen:'',
         })
-        // console.log('forms submitted:' ,this.state)
+        console.log('forms submitted:' ,this.state)
+
       }
 
       

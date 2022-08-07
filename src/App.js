@@ -1,49 +1,70 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container,Col,Row } from 'react-bootstrap';
-import  Users  from "./component/Users";
+import { Container, Col, Row } from 'react-bootstrap';
+import Users from "./component/Users";
 import AddUserForm from './component/AddUserForm';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super();
-    this.state ={
-      user:[
+    this.state = {
+      user: [
         {
-          name:'Barbrah',
-          email:'barbrah@email.com',
-          gen: "22"
+          name: 'Barbrah',
+          email: 'barbrah@email.com',
+          gen: "22",
+          id: 'dsjadWJEIJW'
         },
 
         {
-          name:'Kelly',
-          email:'kelly@email.com',
-          gen: "22"
+          name: 'Kelly',
+          email: 'kelly@email.com',
+          gen: "22",
+          id: 'dsjkdjarsk3455'
         },
       ]
-    } 
+    }
   }
 
-  AddNewUser = (user) =>{
+
+
+  AddNewUser = (user) => {
+    user.id = Math.random().toString();
     this.setState({
-      user:[...this.state.user, user]
+      user: [...this.state.user, user]
     })
   }
-  render(){
-  return (
-   <Container>
-    <Row>
-      <Col xs={4}>
-        <AddUserForm addUser = {this.AddNewUser}/>
-      </Col>
-      
-      <Col>
-      <Users userData={this.state.user}/>
-      </Col>
-    </Row>
-   </Container>
-  );}
+
+  deleteUser = (id) => {
+    let undeletedUser = this.state.user.filter(user => user.id !== id);
+    this.setState({
+      user: undeletedUser
+    })
+  }
+
+  editUser = (id, updatedUser) => {
+    this.setState({
+      user: this.state.user.map(user => user.id === id ? updatedUser : user)
+    })
+  }
+
+
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col xs={4}>
+            <AddUserForm addUser={this.AddNewUser} />
+          </Col>
+
+          <Col>
+            <Users userData={this.state.user} deleteUser={this.deleteUser} editUser={this.editUser} />
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
 }
 
 export default App;
