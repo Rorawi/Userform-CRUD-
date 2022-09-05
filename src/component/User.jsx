@@ -8,7 +8,7 @@ const User = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleDelete = (e) =>{
+  const handleDelete = (e) =>{ 
     e.preventDefault();
    props.deleteUser(props.userInfo.id);
   }
@@ -34,7 +34,7 @@ const User = (props) => {
         <Card.Title>Name: {props.userInfo.name}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">Email: {props.userInfo.email}</Card.Subtitle>
         <Card.Text>
-         Gen: {props.userInfo.name}
+         Gen: {props.userInfo.gen}
         </Card.Text>
         <Button href="#" size='sm' style={{ marginRight: '17px' }} onClick={handleShow}>Edit</Button>
         <Button href="#" variant='danger' size='sm' style={{ backgroundColor: 'wine' }} onClick={handleDelete}>Delete</Button>
