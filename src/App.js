@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Col, Row } from 'react-bootstrap';
+import { connect } from 'react-redux'
 import Users from "./component/Users";
 import AddUserForm from './component/AddUserForm';
-
+import { userAction } from './store/usersAction';
 class App extends Component {
 
   constructor(props) {
@@ -67,4 +68,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) =>({
+   users: state.users
+})
+
+const mapDispatchToProps=  {
+  userAction: userAction
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

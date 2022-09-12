@@ -1,3 +1,5 @@
+import userAction from "../store/usersAction"
+
 let initialState = {
     user: [
         {
@@ -17,8 +19,24 @@ let initialState = {
 }
 
 
-const UserReducer = (state=initialState, action) => {
-    return state;
+const UserReducer = (state = initialState, action) => {
+
+  switch (action.type) {
+    case "ADD_USER":
+      const newUser = {
+          name:action.payload.name,
+          email:action.payload.email,
+          gen:action.payload.gen,
+    
+      }
+      return {...state,user: [...state.user, newUser]}
+
+      // case "DELETE_USER":
+  
+    default:
+      return state;
+  }
+
 }
 
 export default UserReducer;
