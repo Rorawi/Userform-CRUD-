@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Col, Row } from 'react-bootstrap';
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import Users from "./component/Users";
 import AddUserForm from './component/AddUserForm';
-import { userAction } from './store/usersAction';
 class App extends Component {
 
   constructor(props) {
     super();
     this.state = {
-      user: [
-        {
-          name: 'Barbrah',
-          email: 'barbrah@email.com',
-          gen: "22",
-          id: 'dsjadWJEIJW'
-        },
+      // user: [
+      //   {
+      //     name: 'Barbrah',
+      //     email: 'barbrah@email.com',
+      //     gen: "22",
+      //     id: 'dsjadWJEIJW'
+      //   },
 
-        {
-          name: 'Kelly',
-          email: 'kelly@email.com',
-          gen: "22",
-          id: 'dsjkdjarsk3455'
-        },
-      ]
+      //   {
+      //     name: 'Kelly',
+      //     email: 'kelly@email.com',
+      //     gen: "22",
+      //     id: 'dsjkdjarsk3455'
+      //   },
+      // ]
     }
   }
 
@@ -68,12 +67,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) =>({
-   users: state.users
-})
 
-const mapDispatchToProps=  {
-  userAction: userAction
-}
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+
+
+export default App;
