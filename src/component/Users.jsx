@@ -5,17 +5,19 @@ import { connect } from 'react-redux';
 
 const Users = (props) => {
     return (
-        <Container>
+       <div>
+         <Container>
             <Row>
-                {props.users.map((user,) => {
+                {props.users.map((user,index) => {
                     return <User userInfo={user}
-                                 key={user.id}
+                                 key={index}
                                  deleteUser={props.deleteUser}
                                  editUser={props.editUser} />
                 })}
             </Row>
 
         </Container>
+       </div>
  
 
     );
