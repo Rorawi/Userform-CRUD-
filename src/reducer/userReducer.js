@@ -1,22 +1,8 @@
-import{v4 as uuid}from "uuid"
+//import{v4 as uuid}from "uuid"
 
 
 let initialState = {
-    user: [
-        {
-          name: 'Barbrah',
-          email: 'barbrah@email.com',
-          gen: "22",
-          id: uuid()
-        },
-
-        {
-          name: 'Kelly',
-          email: 'kelly@email.com',
-          gen: "22",
-          id: uuid()
-        },
-      ]
+    user: []
 }
 
 

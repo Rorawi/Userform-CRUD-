@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Form,Button } from 'react-bootstrap';
 import {addUser} from "../store/usersAction";
 import {connect} from 'react-redux';
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, serverTimestamp, setDoc } from "firebase/firestore"; 
 import { db } from "../firebase/config"
 import{v4 as uuid}from "uuid"
+
 
     
 const AddUserForm = (props) => {
@@ -14,18 +15,18 @@ const AddUserForm = (props) => {
 
   const handleClick = async(e)=> {
       e.preventDefault();
-      let newUser = { name: name,email: email, gen: gen, id: uuid() };
+      let newUser = { name: name,email: email, gen: gen, id: uuid(), timestamp: serverTimestamp(),};
      // props.addUser(newUser);
       // props.newUser({ name, email, gen });
+      try{
+        await setDoc(doc(db, "react-form-users", newUser.id),newUser);
+      }catch(e)
+      {console.log(e);}
 
-      await setDoc(doc(db, "users", newUser.id),newUser);
+     
       setName("");
       setEmail("");
-      setGen("")
-        
-
-        
-    
+      setGen("") 
   } 
 
       
