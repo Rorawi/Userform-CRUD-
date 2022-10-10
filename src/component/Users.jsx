@@ -13,7 +13,9 @@ const Users = (props) => {
                                  key={index}
                                  deleteUser={props.deleteUser}
                                  editUser={props.editUser} />
+                                 
                 })}
+               
             </Row>
 
         </Container>
@@ -26,5 +28,7 @@ const Users = (props) => {
 const mapStateToProps = (state) =>({
     users: state.user
  })
+ 
+    
 
 export default connect(mapStateToProps)(Users);

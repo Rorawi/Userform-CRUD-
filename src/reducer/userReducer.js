@@ -10,15 +10,8 @@ const UserReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case "ADD_USER":
-      const newUser = {
-           name:action.payload.name,
-           email:action.payload.email,
-          gen:action.payload.gen,
-           id: action.payload.id
-    
-       }
-       return {...state,user: [...state.user, newUser]}
-
+      return {...state ,user: action.payload}
+      
       case "DELETE_USER":
         const filteredUser = state.user.filter(item => item.id !== action.payload)
         return {...state, user: filteredUser}

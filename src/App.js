@@ -12,14 +12,14 @@ function App() {
   const dispatch = useDispatch();
   useEffect(()=> {
     const readData =async()=> {
-      const q = query(collection(db, "user"),orderBy("timestamp", "asc"));
+      const q = query(collection(db, "react-form-users"),orderBy("timestamp", "asc"));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const UserArr = [];
         querySnapshot.forEach((doc) => {
           UserArr.push(doc.data());
         });
         dispatch(addUser(UserArr))
-        console.log(UserArr);
+        //console.log(UserArr);
       });
     } 
     readData()

@@ -4,7 +4,7 @@ import {addUser} from "../store/usersAction";
 import {connect} from 'react-redux';
 import { doc, serverTimestamp, setDoc } from "firebase/firestore"; 
 import { db } from "../firebase/config"
-import{v4 as uuid}from "uuid"
+import {v4 as uuid} from "uuid"
 
 
     
@@ -18,10 +18,11 @@ const AddUserForm = (props) => {
       let newUser = { name: name,email: email, gen: gen, id: uuid(), timestamp: serverTimestamp(),};
      // props.addUser(newUser);
       // props.newUser({ name, email, gen });
+      console.log(newUser);
       try{
         await setDoc(doc(db, "react-form-users", newUser.id),newUser);
       }catch(e)
-      {console.log(e);}
+      {document.write(e);}
 
      
       setName("");
