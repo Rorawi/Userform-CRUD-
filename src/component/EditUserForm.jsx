@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Form,Button } from 'react-bootstrap';
 import {connect} from 'react-redux'
 import {editUsers} from '../store/usersAction'
-
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase/config"
 class EditUserForm extends Component {
     constructor(props){
         super();
@@ -22,17 +23,23 @@ this.setState({
     });
       }
 
-      handleSubmit = (e) => {
+
+      handleSubmit = async(e) => {
         e.preventDefault();
        // this.props.editUser(this.state.id,this.state);
        console.log(this.props.userInfo);
-       this.props.editUsers(this.state);
-        this.setState({
-            name:'',
-            email:'',
-            gen:'',
-        });
+       //this.props.editUsers(this.state);
+        // this.setState({
+        //     name:'',
+        //     email:'',
+        //     gen:'',
+        //     id:''
+        // });
         this.props.closeModal();
+
+       
+const userRef = doc(db, "react-form-users", this.state.props.userInfo.id);
+await updateDoc(userRef,this.state.props.userInfo);
         // console.log('forms submitted:' ,this.state)
       }
 
