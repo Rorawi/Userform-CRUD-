@@ -18,11 +18,11 @@ const AddUserForm = (props) => {
       let newUser = { name: name,email: email, gen: gen, id: uuid(), timestamp: serverTimestamp(),};
      // props.addUser(newUser);
       // props.newUser({ name, email, gen });
-      console.log(newUser);
+      // console.log(newUser);
       try{
         await setDoc(doc(db, "react-form-users", newUser.id),newUser);
       }catch(e)
-      {document.write(e);}
+      {console.log(e);}
 
      
       setName("");

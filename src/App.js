@@ -19,7 +19,7 @@ function App() {
           UserArr.push(doc.data());
         });
         dispatch(addUser(UserArr))
-        //console.log(UserArr);
+        console.log(UserArr);
       });
     } 
     readData()
