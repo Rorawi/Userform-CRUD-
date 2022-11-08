@@ -26,7 +26,7 @@ const Users = (props) => {
 }
 
 const mapStateToProps = (state) =>({
-    users: state.user
+    users: state.UserReducer.user
  })
  
     

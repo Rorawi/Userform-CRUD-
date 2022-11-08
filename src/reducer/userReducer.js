@@ -13,7 +13,7 @@ const UserReducer = (state = initialState, action) => {
       return {...state ,user: action.payload}
       
       case "DELETE_USER":
-        const filteredUser = state.user.filter(item => item.id !== action.payload)
+        const filteredUser = state.user.filter((item) => item.id !== action.payload)
         return {...state, user: filteredUser}
       
         case "EDIT_USER":
